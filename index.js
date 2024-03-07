@@ -11,8 +11,10 @@ const Player = (symbol) => {
 }
 
 const gameBoard = (function () {
-    const board = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+    const board = ['', '', '', '', '', '', '', '', ''];
 
+/*     
+    Uncomment to test in console
     const render = () => {
         console.log("---------------");
         for (let i = 0; i < board.length; i+=3) {
@@ -20,7 +22,7 @@ const gameBoard = (function () {
             console.log('');
         }
         console.log("---------------");
-    }
+    } */
 
     const setSymbol = (symbol, index) => {
         if (index > board.length) {
@@ -37,16 +39,16 @@ const gameBoard = (function () {
     };
 
     const isEmpty = (index) => {
-        return board[index] === '-';
+        return board[index] === '';
     }
 
     const reset = () => {
         for (let i = 0; i < board.length; i++) {
-            board[i] = '-';
+            board[i] = '';
         }
     };
 
-    return { render, setSymbol, getSymbol, isEmpty, reset };
+    return { setSymbol, getSymbol, isEmpty, reset };
 })();
 
 const gameController = (function () {
@@ -85,27 +87,19 @@ const gameController = (function () {
     const playRound = (cellIndex) => {
         console.log(`Current round: ${round}, Player: ${getCurrentPlayerSymbol()}`);
         if (!gameBoard.isEmpty(cellIndex)) {
-            console.log('This cell is occupied.');
-            console.log(`We're staying in round: ${round}`);
             return;
         }
         gameBoard.setSymbol(getCurrentPlayerSymbol(), cellIndex);
-        gameBoard.render();
         isOver = checkWinner(cellIndex);
         if (isOver) {
-            console.log(`${getCurrentPlayerSymbol()} wins.`);
             gameController.reset();
-            gameBoard.render();
             return;
         }
         if (round === 9) {
-            console.log(`Tie.`);
             gameController.reset();
-            gameBoard.render();
             return;
         }
         round++;
-        console.log(`Next round: ${round}, Player will be: ${getCurrentPlayerSymbol()}`);
     };
 
     const getIsOver = () => {
@@ -115,9 +109,57 @@ const gameController = (function () {
     const reset = () => {
         round = 1;
         isOver = false;
-        gameBoard.reset();
     }
 
     return {playRound, getIsOver, reset};
 
+})();
+
+const displayController = (function () {
+    const cellElements = document.querySelectorAll('.cell');
+    const resetButton = document.getElementById('reset-btn');
+    const nextRoundButton = document.getElementById('next');
+    const leaveGameButton = document.getElementById('leave');
+    const winnerMessage = document.getElementById('winner');
+    const overlay = document.querySelector('.result__overlay');
+    const modal = document.querySelector('.result__modal');
+    const currentPlayerMessage = document.getElementById('current-player');
+
+    let playerXScore = 0;
+    let playerOScore = 0;
+    let ties = 0;
+    let tie = false;
+
+    const updateGameBoard = () => {
+        for (let i = 0; i < cellElements.length; i++) {
+            cellElements[i].textContent = gameBoard.getSymbol(i);
+        }
+    };
+
+    cellElements.forEach((cellElement) => {
+        cellElement.addEventListener('click', (event) => {
+            if (gameController.getIsOver() || event.target.textContent !== "") {
+                return;
+            }
+            gameController.playRound(parseInt(event.target.dataset.index));
+            updateGameBoard();
+        })
+    });
+
+    const setMessage = (message) => {
+        currentPlayerMessage.textContent = message;
+    }
+
+    resetButton.addEventListener('click', () => {
+        gameBoard.reset();
+        gameController.reset();
+        updateGameBoard();
+        setMessage('Player X');
+    });
+
+    const setResultMessage = (message) => {
+        winnerMessage.textContent = message;
+    }
+
+    return { setMessage, setResultMessage };
 })();

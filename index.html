@@ -9,32 +9,39 @@
 </head>
 <body>
     <div class="result__overlay"></div>
-    <div class="result__modal"></div>
+    <div class="result__modal">
+        <p>Well done!</p>
+        <h3 class="result__message" id="winner"></h3>
+        <div class="result__modal-actions">
+            <button class="btn leave" id="leave">Leave game</button>
+            <button class="btn next" id="next">Next round</button>
+        </div>
+    </div>
     <header class="header">
         <div class="header__logo">
             <img src="./assets/icons/grid.svg" alt="TTT Logo">
         </div>
         <h1 class="header__title">Tic-Tac-Toe</h1>
-        <button class="header__reset">
+        <button class="header__reset" id="reset-btn">
             <img src="./assets/icons/restart.svg" alt="Restart">
         </button>
     </header>
     <main>
         <section class="gamestart__section hidden"></section>
         <section class="gameboard__section">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
+            <div class="cell available" data-index="0"></div>
+            <div class="cell available" data-index="1"></div>
+            <div class="cell available" data-index="2"></div>
+            <div class="cell available" data-index="3"></div>
+            <div class="cell available" data-index="4"></div>
+            <div class="cell available" data-index="5"></div>
+            <div class="cell available" data-index="6"></div>
+            <div class="cell available" data-index="7"></div>
+            <div class="cell available" data-index="8"></div>
         </section>
         <section class="info__section">
             <div class="current__player-info">
-                <p>It's <span id="current-player">PlayeX's</span> turn</p>
+                <p>It's <span id="current-player">Player X</span>'s turn</p>
             </div>
             <div class="scores-info">
                 <ul class="scores-list">
