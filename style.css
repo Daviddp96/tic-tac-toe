@@ -1,0 +1,120 @@
+:root {
+    --clr-primary: #252627;
+    --clr-secondary: #2c3034;
+    --clr-neutral: #D3D4D9;
+    --clr-blue: #048BA8;
+    --clr-orange: #F18F01;
+    --clr-red: #BB0A21;
+} 
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: white;
+    background-color: var(--clr-primary);
+    font-family: sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.header__logo img {
+    transform: scale(2);
+}
+
+.header__reset {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background-color: var(--clr-neutral);
+}
+
+main {
+    display: grid;
+    place-items: center;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.gameboard__section {
+    width: 310px;
+    min-height: 310px;
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.cell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-secondary);
+    border-radius: 0.5rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.3);
+}
+
+.cell-content {
+    font-size: 4rem;
+}
+
+.info__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+}
+
+.scores-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-content: center;
+    gap: 2rem;
+}
+
+.score-container {
+    background-color: #2c3034;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.player {
+    font-size: 0.69rem;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.score {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+footer {
+    padding: 2rem 0;
+}
+
+.attribution {
+    text-align: center;
+}

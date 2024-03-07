@@ -3,9 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/icons/" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
     <title>Tic Tac Toe</title>
 </head>
 <body>
+    <div class="result__overlay"></div>
+    <div class="result__modal"></div>
+    <header class="header">
+        <div class="header__logo">
+            <img src="./assets/icons/grid.svg" alt="TTT Logo">
+        </div>
+        <h1 class="header__title">Tic-Tac-Toe</h1>
+        <button class="header__reset">
+            <img src="./assets/icons/restart.svg" alt="Restart">
+        </button>
+    </header>
+    <main>
+        <section class="gamestart__section hidden"></section>
+        <section class="gameboard__section">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </section>
+        <section class="info__section">
+            <div class="current__player-info">
+                <p>It's <span id="current-player">PlayeX's</span> turn</p>
+            </div>
+            <div class="scores-info">
+                <ul class="scores-list">
+                    <li class="score-container playerX-container">
+                        <p class="player">Player X</p>
+                        <p class="score" id="playerX-score">0</p>
+                    </li>
+                    <li class="score-container ties-container">
+                        <p class="player">Ties</p>
+                        <p class="score" id="ties-score">0</p>
+                    </li>
+                    <li class="score-container playerO-container">
+                        <p class="player">Player O</p>
+                        <p class="score" id="playerO-score">0</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="attribution">
+            <p>Made by <a href="#">David</a></p>
+        </div>
+    </footer>
     <script src="./index.js"></script>
 </body>
 </html>

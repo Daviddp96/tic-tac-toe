@@ -92,7 +92,6 @@ const gameController = (function () {
         gameBoard.setSymbol(getCurrentPlayerSymbol(), cellIndex);
         gameBoard.render();
         isOver = checkWinner(cellIndex);
-        console.log(`isOver = ${isOver}`);
         if (isOver) {
             console.log(`${getCurrentPlayerSymbol()} wins.`);
             gameController.reset();
