@@ -105,6 +105,13 @@ main {
     font-size: 1rem;
     font-weight: bold;
     color: var(--clr-primary);
+    cursor:  pointer;
+    transition: all 0.4s;
+}
+
+.btn:hover,
+.btn:active {
+    transform: scale(0.9);
 }
 
 .next {
@@ -188,9 +195,25 @@ footer {
     text-align: center;
 }
 
+.attribution a {
+    color: #F18F01;
+    text-decoration: none;
+    transition: all 0.4s;
+}
+
+.attribution a:hover,
+.attribution a:active {
+    color: #b3b4b5;
+}
+
 @media screen and (min-width: 1000px) {
     .gameboard__section {
         width: 475px;
         min-height: 475px;
+    }
+
+    .score-container {
+        min-width: 20px;
+        height: 100px;
     }
 }

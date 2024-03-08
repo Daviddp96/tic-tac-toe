@@ -91,11 +91,8 @@ const gameController = (function () {
         }
         gameBoard.setSymbol(getCurrentPlayerSymbol(), cellIndex);
         isOver = checkWinner(cellIndex);
-        if (isOver) {
-            gameController.reset();
-            return;
-        }
-        if (round === 9) {
+        if (isOver || round === 9) {
+            displayController.showModal();
             gameController.reset();
             return;
         }
@@ -124,11 +121,6 @@ const displayController = (function () {
     const overlay = document.querySelector('.result__overlay');
     const modal = document.querySelector('.result__modal');
     const currentPlayerMessage = document.getElementById('current-player');
-
-    let playerXScore = 0;
-    let playerOScore = 0;
-    let ties = 0;
-    let tie = false;
 
     const updateGameBoard = () => {
         for (let i = 0; i < cellElements.length; i++) {
@@ -172,6 +164,28 @@ const displayController = (function () {
         overlay.style.display = 'none';
         modal.style.display = 'none';
     }
+
+    nextRoundButton.addEventListener('click', () => {
+        gameBoard.reset();
+        hideModal();
+        updateGameBoard();
+        cellElements.forEach((cellElement) => {
+            cellElement.classList.add('available');
+            cellElement.style.cursor = 'pointer';
+        })
+        setMessage('Player X');
+    });
+
+    leaveGameButton.addEventListener('click', () => {
+        gameBoard.reset();
+        hideModal();
+        updateGameBoard();
+        cellElements.forEach((cellElement) => {
+            cellElement.classList.add('available');
+            cellElement.style.cursor = 'pointer';
+        })
+        setMessage('Player X');
+    })
 
     return { setMessage, setResultMessage, showModal, hideModal };
 })();
