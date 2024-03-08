@@ -145,6 +145,10 @@ const displayController = (function () {
     }
 
     resetButton.addEventListener('click', () => {
+        cellElements.forEach((cellElement) => {
+            cellElement.classList.add('available');
+            cellElement.style.cursor = 'pointer';
+        })
         gameBoard.reset();
         gameController.reset();
         updateGameBoard();
