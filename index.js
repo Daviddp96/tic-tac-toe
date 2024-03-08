@@ -142,6 +142,8 @@ const displayController = (function () {
                 return;
             }
             gameController.playRound(parseInt(event.target.dataset.index));
+            cellElement.classList.remove('available');
+            cellElement.style.cursor = 'default';
             updateGameBoard();
         })
     });
@@ -161,5 +163,15 @@ const displayController = (function () {
         winnerMessage.textContent = message;
     }
 
-    return { setMessage, setResultMessage };
+    const showModal = () => {
+        overlay.style.display = 'block';
+        modal.style.display = 'block';
+    }
+
+    const hideModal = () => {
+        overlay.style.display = 'none';
+        modal.style.display = 'none';
+    }
+
+    return { setMessage, setResultMessage, showModal, hideModal };
 })();

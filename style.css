@@ -43,6 +43,14 @@ body {
     border: none;
     outline: none;
     background-color: var(--clr-neutral);
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.header__reset:hover {
+    background-color: #b3b4b5;
+    transform: scale(0.9);
 }
 
 main {
@@ -178,4 +186,11 @@ footer {
 
 .attribution {
     text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+    .gameboard__section {
+        width: 475px;
+        min-height: 475px;
+    }
 }
